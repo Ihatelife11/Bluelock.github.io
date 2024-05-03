@@ -92,7 +92,38 @@ if game.PlaceId == 16714905773 then
           end    
     })
 
-    
+    TrollTab:AddButton({
+        Name = "Give everyone Blessed",
+        Callback = function()
+            local Players = game:GetService("Players")
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            local ohString2 = "Blessed"
+            
+            for _, player in ipairs(Players:GetPlayers()) do
+                ReplicatedStorage.Remotes.GiveAura:FireServer(player, ohString2)
+            end
+          end    
+    })
+
+    TrollTab:AddButton({
+        Name = "Unlock all auras in collection for everyone",
+        Callback = function()
+            local Players = game:GetService("Players")
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            
+            local Auras = ReplicatedStorage.Auras:GetChildren()
+            
+            for _, aura in ipairs(Auras) do
+                for _, player in ipairs(Players:GetPlayers()) do
+                    ReplicatedStorage.Remotes.GiveAura:FireServer(player, aura.Name)
+                end
+            end
+          end    
+    })
+
+
+
+
     playerTab:AddButton({
         Name = "give luck just to yourself",
         Callback = function()
