@@ -74,6 +74,24 @@ if game.PlaceId == 16714905773 then
             end
           end    
     })
+
+    TrollTab:AddButton({
+        Name = "Crash server",
+        Callback = function()
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+            while true do
+                local Auras = ReplicatedStorage.Auras:GetChildren()
+            
+                for _, aura in ipairs(Auras) do
+                    game:GetService("ReplicatedStorage").Remotes.AuraEquip:FireServer(aura)
+                end
+            
+                wait(0.1) 
+            end
+          end    
+    })
+
     
     playerTab:AddButton({
         Name = "give luck just to yourself",
