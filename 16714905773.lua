@@ -1,12 +1,7 @@
 if game.PlaceId == 16714905773 then
     local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
     local Window = OrionLib:MakeWindow({Name = "tai's RNG Fucker", HidePremium = false, SaveConfig = false, ConfigFolder = "Orion"})
-    
-    --Function
-    
-    
-    
-    
+     
     -- Tabs
     local TrollTab = Window:MakeTab({
         Name = "Troll",
