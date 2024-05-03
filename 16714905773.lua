@@ -15,65 +15,6 @@ if game.PlaceId == 16714905773 then
         PremiumOnly = false
     })
 
-    --Buttons
-    TrollTab:AddButton({
-        Name = "Give inf luck to everyone",
-        Callback = function()
-            local Players = game:GetService("Players")
-            local ReplicatedStorage = game:GetService("ReplicatedStorage")
-            local ohString2 = "1000000000"
-            
-            for _, player in ipairs(Players:GetPlayers()) do
-                ReplicatedStorage.Remotes.ApplyLuck:FireServer(player, ohString2)
-            end
-          end    
-    })
-    
-    TrollTab:AddButton({
-        Name = "Make everyone have -9e money",
-        Callback = function()
-            local Players = game:GetService("Players")
-            local ReplicatedStorage = game:GetService("ReplicatedStorage")
-            local ohString2 = "99999999999999999999999999999999999999"
-            
-            for _, player in ipairs(Players:GetPlayers()) do
-                ReplicatedStorage.Remotes.ApplyCoins:FireServer(player, ohString2)
-            end
-          end    
-    })
-
-    TrollTab:AddButton({
-        Name = "spam change the weather",
-        Callback = function()
-            local ReplicatedStorage = game:GetService("ReplicatedStorage")
-            local ohString1 = "Null"
-            local ohString2 = "1"
-            
-            while true do
-                local WeatherConfigs = ReplicatedStorage.WeatherConfigs:GetChildren()
-            
-                for _, weatherConfig in ipairs(WeatherConfigs) do
-                    ReplicatedStorage.Remotes.ApplyWeather:FireServer(weatherConfig.Name, ohString2)
-                end
-            
-                wait(0.1)
-            end            
-          end    
-    })
-
-
-    TrollTab:AddButton({
-        Name = "Disable rolling for everyone",
-        Callback = function()
-            local Players = game:GetService("Players")
-            local ReplicatedStorage = game:GetService("ReplicatedStorage")
-            local ohString2 = "0"
-            
-            for _, player in ipairs(Players:GetPlayers()) do
-                ReplicatedStorage.Remotes.ApplyLuck:FireServer(player, ohString2)
-            end
-          end    
-    })
 
     TrollTab:AddButton({
         Name = "Crash server",
@@ -92,47 +33,6 @@ if game.PlaceId == 16714905773 then
           end    
     })
 
-    TrollTab:AddButton({
-        Name = "Give everyone Blessed",
-        Callback = function()
-            local Players = game:GetService("Players")
-            local ReplicatedStorage = game:GetService("ReplicatedStorage")
-            local ohString2 = "Blessed"
-            
-            for _, player in ipairs(Players:GetPlayers()) do
-                ReplicatedStorage.Remotes.GiveAura:FireServer(player, ohString2)
-            end
-          end    
-    })
-
-    TrollTab:AddButton({
-        Name = "Unlock all auras in collection for everyone",
-        Callback = function()
-            local Players = game:GetService("Players")
-            local ReplicatedStorage = game:GetService("ReplicatedStorage")
-            
-            local Auras = ReplicatedStorage.Auras:GetChildren()
-            
-            for _, aura in ipairs(Auras) do
-                for _, player in ipairs(Players:GetPlayers()) do
-                    ReplicatedStorage.Remotes.GiveAura:FireServer(player, aura.Name)
-                end
-            end
-          end    
-    })
-
-
-
-
-    playerTab:AddButton({
-        Name = "give luck just to yourself",
-        Callback = function()
-            local ohInstance1 = game:GetService("Players").LocalPlayer
-            local ohString2 = "10000000000"
-            
-            game:GetService("ReplicatedStorage").Remotes.ApplyLuck:FireServer(ohInstance1, ohString2)
-          end    
-    })
 
     playerTab:AddButton({
         Name = "give yourself admin aura",
