@@ -56,7 +56,7 @@ if game.PlaceId == 16714905773 then
                     ReplicatedStorage.Remotes.ApplyWeather:FireServer(weatherConfig.Name, ohString2)
                 end
             
-                wait(1) -- Adjust the wait time according to your preference
+                wait(0.1)
             end            
           end    
     })
