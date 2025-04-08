@@ -1,4 +1,3 @@
-
 local player = game.Players.LocalPlayer
 local gui = player:WaitForChild("PlayerGui")
 
