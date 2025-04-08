@@ -1,55 +1,45 @@
-if game.PlaceId == 16714905773 then
-    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-    local Window = OrionLib:MakeWindow({Name = "tai's RNG Fucker", HidePremium = false, SaveConfig = false, ConfigFolder = "Orion"})
-     
-    -- Tabs
-    local TrollTab = Window:MakeTab({
-        Name = "Troll",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
-    
-    local playerTab = Window:MakeTab({
-        Name = "Player",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
+-- LocalScript (e.g. StarterPlayerScripts)
+local player = game.Players.LocalPlayer
+local gui = player:WaitForChild("PlayerGui")
 
+-- Blur the screen
+local blur = Instance.new("BlurEffect")
+blur.Size = 24
+blur.Parent = game.Lighting
 
-    TrollTab:AddButton({
-        Name = "Crash server",
-        Callback = function()
-            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+-- Glitch UI
+local screenGui = Instance.new("ScreenGui", gui)
+screenGui.IgnoreGuiInset = true
+screenGui.ResetOnSpawn = false
 
-            while true do
-                local Auras = ReplicatedStorage.Auras:GetChildren()
-            
-                for _, aura in ipairs(Auras) do
-                    game:GetService("ReplicatedStorage").Remotes.AuraEquip:FireServer(aura)
-                end
-            
-                wait(0.1) 
-            end
-          end    
-    })
+local label = Instance.new("TextLabel", screenGui)
+label.Size = UDim2.new(1, 0, 1, 0)
+label.BackgroundColor3 = Color3.new(0, 0, 0)
+label.TextColor3 = Color3.new(1, 0, 0)
+label.Font = Enum.Font.Code
+label.TextSize = 36
+label.Text = "⚠️ UNEXPECTED CLIENT ERROR ⚠️\n\nError Code: 268xCRASH\n\nAttempting to recover..."
+label.TextWrapped = true
 
+-- Optional: Play a glitch/static sound
+local sound = Instance.new("Sound", player:WaitForChild("PlayerGui"))
+sound.SoundId = "rbxassetid://9118823102" -- Static/glitch sound
+sound.Volume = 1
+sound:Play()
 
-    playerTab:AddButton({
-        Name = "give yourself admin aura",
-        Callback = function()
-            local ohInstance1 = game:GetService("ReplicatedStorage").Auras.Admin
+-- Glitchy flicker effect
+spawn(function()
+	while wait(0.1) do
+		label.Visible = not label.Visible
+	end
+end)
 
-            game:GetService("ReplicatedStorage").Remotes.AuraEquip:FireServer(ohInstance1)
-          end    
-    })
+-- Wait then "crash"
+wait(5)
 
-    playerTab:AddButton({
-        Name = "give yourself sigma dev aura",
-        Callback = function()
-            local ohInstance1 = game:GetService("ReplicatedStorage").Auras.sigma
+-- Remove blur and UI
+blur:Destroy()
+screenGui:Destroy()
 
-            game:GetService("ReplicatedStorage").Remotes.AuraEquip:FireServer(ohInstance1)
-          end    
-    })
-end
-OrionLib:init()
+-- Kick player
+player:Kick("An unexpected error occurred. Please reinstall Roblox.")
