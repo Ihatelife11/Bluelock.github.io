@@ -18,7 +18,7 @@ label.BackgroundColor3 = Color3.new(0, 0, 0)
 label.TextColor3 = Color3.fromRGB(0, 255, 0)
 label.Font = Enum.Font.Code
 label.TextSize = 40
-label.Text = "⚠️ SYSTEM OVERRIDE ⚠️\n\nElysium is Paid\n\nModifying client memory..."
+label.Text = "Elysium is Paid"
 label.TextWrapped = true
 
 
